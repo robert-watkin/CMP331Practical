@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CMP331Practical.Models;
+using CMP331Practical.Contracts;
 
 namespace CMP331Practical.Views
 {
@@ -19,9 +21,27 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class NewUser : Window
     {
-        public NewUser()
+
+        private User loggedInUser;
+        public NewUser(User loggedInUser)
         {
+            this.loggedInUser = loggedInUser;
+
+            // initialise WPF components
             InitializeComponent();
+        }
+
+        private void SaveRecord(object sender, RoutedEventArgs e)
+        {
+            // TODO save record
+        }
+
+
+        private void Dashboard(object sender, RoutedEventArgs e)
+        {
+            Dashboard d = new Dashboard(loggedInUser);
+            d.Show();
+            this.Close();
         }
     }
 }

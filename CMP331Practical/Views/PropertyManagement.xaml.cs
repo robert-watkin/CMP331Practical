@@ -53,12 +53,12 @@ namespace CMP331Practical.Views
 
         private void DeleteProperty(object sender, RoutedEventArgs e)
         {
-
+            // TODO delete property
         }
 
         private void New(object sender, RoutedEventArgs e)
         {
-
+            // TODO new property
         }
     }
 }

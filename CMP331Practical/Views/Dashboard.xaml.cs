@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using CMP331Practical.Contracts;
 using CMP331Practical.Views;
 using CMP331Practical.Models;
+using Unity;
 
 namespace CMP331Practical.Views
 {
@@ -23,13 +24,31 @@ namespace CMP331Practical.Views
     public partial class Dashboard : Window
     {
 
-        public User loggedInUser;
+        IRepository<Role> roleContext;
+        private User loggedInUser;
 
         public Dashboard(User loggedInUser)
         {
             InitializeComponent();
             LoadNotifications();
             this.loggedInUser = loggedInUser;
+
+            this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
+
+            // set name and role on dashboard
+            txtUserName.Content = this.loggedInUser.Firstname + " " + this.loggedInUser.Lastname;
+
+            // get the users current role name
+            List<Role> roleList = roleContext.Collection().ToList();
+            Role currentRole = null;
+            foreach (Role r in roleList)
+            {
+                if (r.Id == loggedInUser.RoleId)
+                {
+                    currentRole = r;
+                }
+            }
+            txtUserRole.Content = currentRole.Name;
         }
 
 
@@ -48,6 +67,7 @@ namespace CMP331Practical.Views
 
         private void PropertyManagement(object sender, RoutedEventArgs e)
         {
+            // open property managmeent window
             PropertyManagement pm = new PropertyManagement(loggedInUser);
             pm.Show();
             this.Close();
@@ -60,7 +80,10 @@ namespace CMP331Practical.Views
 
         private void UserManagement(object sender, RoutedEventArgs e)
         {
-            // TODO user management
+            // open user management window
+            UserManagement um = new UserManagement(loggedInUser);
+            um.Show();
+            this.Close();
         }
     }
 }

@@ -48,3 +48,9 @@ C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\bin\Debug\ru
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\PropertyManagement.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewProperty.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewUser.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\UserManagement.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewProperty.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewUser.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\UserManagement.baml
