@@ -58,7 +58,7 @@
         <Button Content="Save" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="8" VerticalAlignment="Center" Width="60" FontFamily="Consolas" FontSize="18" Click="SaveRecord" FontWeight="Bold"/>
         <Button Content="&gt;|" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="8" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="LastRecord" FontWeight="Bold"/>
         <Button Content="&gt;" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="8" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="10,0,0,0" FontSize="18" Click="NextRecord" FontWeight="Bold"/>
-        <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="DeleteProperty"/>
+        <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="Delete"/>
         <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" Width="80" Margin="0,0,0,0" FontSize="16" Click="New"/>
 
         <!--Back and Exit-->

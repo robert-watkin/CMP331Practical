@@ -30,14 +30,13 @@
         <Label Name="txtUserRole" Content="Letting Agent" HorizontalAlignment="Left" Margin="0,25,10,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="1"/>
 
         <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,60,10,5" Padding="0">
-
             <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,10,10,10">
                 <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Notifications"/>
             </StackPanel>
         </Border>
 
 
-
+        <!--Navigation Buttons-->
         <StackPanel Grid.IsSharedSizeScope="True" Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="2">
             <Button Grid.Row="3" Content="Available Properties" Height="50" Margin="20,15,15,5" FontSize="18" Click="AvailableProperties"/>
             <Button Grid.Row="3" Content="User Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="UserManagement"/>
@@ -45,8 +44,22 @@
         </StackPanel>
 
         <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10,20,10,30" Padding="0">
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,10,10,10">
-                <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Properties"/>
+            <StackPanel Orientation="Vertical">
+                <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Assigned Properties"/>
+                <ItemsControl Name="AssignedProperties">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="5,10,5,10">
+                                <TextBlock Text="{Binding AddressLine1}"/>
+                                <TextBlock Text="{Binding PostCode}"/>
+                                <TextBlock Margin="0,5,0,0" Text="{Binding RequiredMaintainance, StringFormat='Required Maintainance: {0}'}"/>
+                                <TextBlock Text="{Binding QuarterlyInspection, StringFormat='Next Inspection: {0}'}"/>
+                                <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspeciton: {0}'}"/>
+                                <TextBlock Text="{Binding FiveYearElectricalInspection, StringFormat='Next Electrical Inspection: {0}'}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
         </Border>
 

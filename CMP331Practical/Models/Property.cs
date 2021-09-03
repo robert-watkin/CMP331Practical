@@ -20,6 +20,7 @@ namespace CMP331Practical.Models
         public string MaintainanceStaffId { get; set; }
         public string LettingAgentId { get; set; }
 
+        public Property() { }
         public Property(bool Available, string AddressLine1, string AddressLine2, string PostCode, float MonthlyRent, string RequiredMaintainance, DateTime QuarterlyInspection, DateTime AnnualGasInspection, DateTime FiveYearElectricalInspection, string MaintainanceStaffId, string LettingAgentId)
         {
             this.Available = Available;

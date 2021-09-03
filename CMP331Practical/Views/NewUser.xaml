@@ -37,7 +37,7 @@
 
         <!--Email-->
         <Label Content="Email:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-50,0,10,0" Grid.Column="1" Grid.Row="4" />
-        <TextBox Name="txtEmail" Text="AB12 3CD" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
+        <TextBox Name="txtEmail" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
 
         <!--Role-->
         <Label Content="Role:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-150,0,10,0" Grid.Column="1" Grid.Row="5" />

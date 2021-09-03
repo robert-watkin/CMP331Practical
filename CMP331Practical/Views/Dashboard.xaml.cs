@@ -25,22 +25,29 @@ namespace CMP331Practical.Views
     {
 
         IRepository<Role> roleContext;
+        IRepository<Property> propertyContext;
         private User loggedInUser;
+        Role currentRole = null;
+
+        public List<Property> assignedProperties;
 
         public Dashboard(User loggedInUser)
         {
-            InitializeComponent();
-            LoadNotifications();
-            this.loggedInUser = loggedInUser;
 
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
+            this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
+
+            InitializeComponent();
+            LoadNotifications();
+            LoadAssignedProperties();
+            this.loggedInUser = loggedInUser;
+            
 
             // set name and role on dashboard
             txtUserName.Content = this.loggedInUser.Firstname + " " + this.loggedInUser.Lastname;
 
             // get the users current role name
             List<Role> roleList = roleContext.Collection().ToList();
-            Role currentRole = null;
             foreach (Role r in roleList)
             {
                 if (r.Id == loggedInUser.RoleId)
@@ -51,6 +58,43 @@ namespace CMP331Practical.Views
             txtUserRole.Content = currentRole.Name;
         }
 
+        private void LoadAssignedProperties()
+        {
+            assignedProperties = new List<Property>();
+            List<Property> allProperties = propertyContext.Collection().ToList();
+
+            if (currentRole.Name == "System Admin") // all properties displayed for system admin
+            {
+                assignedProperties = allProperties;
+            }
+            else if (currentRole.Name == "Letting Agent") // only properties assigned to letting agents displayed to the letting agent
+            {
+                foreach (Property p in allProperties)
+                {
+                    if (p.LettingAgentId == loggedInUser.Id)
+                    {
+                        assignedProperties.Add(p);
+                    }
+                }
+            }
+            else // only properties assigned to maintainance staff displayed to maintainance staff
+            {
+                foreach (Property p in allProperties)
+                {
+                    if (p.MaintainanceStaffId == loggedInUser.Id)
+                    {
+                        assignedProperties.Add(p);
+                    }
+                }
+            }
+
+
+            assignedProperties = allProperties;
+            AssignedProperties.ItemsSource = assignedProperties;
+
+
+
+        }
 
         private void SignOut(object sender, RoutedEventArgs e)
         {

@@ -147,7 +147,7 @@ namespace CMP331Practical.Views
             nu.Show();
         }
 
-        private async void DeleteProperty(object sender, RoutedEventArgs e)
+        private async void Delete(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
