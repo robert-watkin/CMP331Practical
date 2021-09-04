@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMP331Practical.Views"
         mc:Ignorable="d"
-        Title="NewProperty" Height="600" Width="550">
+        Title="NewProperty" ResizeMode="NoResize" Height="600" Width="550">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />

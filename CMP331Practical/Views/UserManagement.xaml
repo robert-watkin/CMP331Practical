@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMP331Practical.Views"
         mc:Ignorable="d"
-    Title="UserManagement" Height="450" Width="550">
+    Title="UserManagement" ResizeMode="NoResize" Height="450" Width="550">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
@@ -59,7 +59,7 @@
         <Button Content="&gt;|" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="8" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="LastRecord" FontWeight="Bold"/>
         <Button Content="&gt;" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="8" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="10,0,0,0" FontSize="18" Click="NextRecord" FontWeight="Bold"/>
         <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="Delete"/>
-        <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" Width="80" Margin="0,0,0,0" FontSize="16" Click="New"/>
+        <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="New"/>
 
         <!--Back and Exit-->
         <Button Content="Dashboard" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>

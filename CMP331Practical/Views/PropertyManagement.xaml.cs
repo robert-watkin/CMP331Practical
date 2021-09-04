@@ -90,6 +90,7 @@ namespace CMP331Practical.Views
 
             // adds null option to cmbbox incase not required
             User nullUser = new User(null, null, null, null, null);
+            nullUser.Id = "";
             maintainanceStaff.Add(nullUser);
             lettingAgents.Add(nullUser);
 
@@ -140,6 +141,7 @@ namespace CMP331Practical.Views
             // select the first record
             selectedProperty = propertyList.FirstOrDefault();
             position = propertyList.IndexOf(selectedProperty);
+            lblId.Content = selectedProperty.Id;
             chkAvailable.IsChecked = selectedProperty.Available;
             txtAddressLine1.Text = selectedProperty.AddressLine1;
             txtAddressLine2.Text = selectedProperty.AddressLine2;
@@ -162,6 +164,7 @@ namespace CMP331Practical.Views
             {
                 selectedProperty = propertyList[position-1];
                 position = propertyList.IndexOf(selectedProperty);
+                lblId.Content = selectedProperty.Id;
                 chkAvailable.IsChecked = selectedProperty.Available;
                 txtAddressLine1.Text = selectedProperty.AddressLine1;
                 txtAddressLine2.Text = selectedProperty.AddressLine2;
@@ -180,11 +183,16 @@ namespace CMP331Practical.Views
         {
             if (selectedProperty == null) { return; }
 
+            Console.WriteLine("Next Record");
+            Console.WriteLine(position);
+
             // select the next record
             if (position != propertyListSize - 1)
             {
+                Console.WriteLine("Executing");
                 position++;
                 selectedProperty = propertyList[position];
+                lblId.Content = selectedProperty.Id;
                 chkAvailable.IsChecked = selectedProperty.Available;
                 txtAddressLine1.Text = selectedProperty.AddressLine1;
                 txtAddressLine2.Text = selectedProperty.AddressLine2;
@@ -197,6 +205,9 @@ namespace CMP331Practical.Views
                 cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
                 cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
             }
+
+            Console.WriteLine(position);
+
         }
 
         private void LastRecord(object sender, RoutedEventArgs e)
@@ -208,6 +219,7 @@ namespace CMP331Practical.Views
             {
                 position = propertyListSize - 1;
                 selectedProperty = propertyList[position];
+                lblId.Content = selectedProperty.Id;
                 chkAvailable.IsChecked = selectedProperty.Available;
                 txtAddressLine1.Text = selectedProperty.AddressLine1;
                 txtAddressLine2.Text = selectedProperty.AddressLine2;

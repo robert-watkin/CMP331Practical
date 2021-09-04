@@ -84,6 +84,7 @@ namespace CMP331Practical.Views
 
             // adds null option to cmbbox incase not required
             User nullUser = new User(null, null, null, null, null);
+            nullUser.Id = "";
             maintainanceStaff.Add(nullUser);
             lettingAgents.Add(nullUser);
 

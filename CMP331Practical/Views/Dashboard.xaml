@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMP331Practical.Views"
         mc:Ignorable="d"
-        Title="Window1" Height="600" Width="800">
+        Title="Window1" ResizeMode="NoResize" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
@@ -20,19 +20,30 @@
 
         <!--Top Bar-->
         <Label Content="Dashboard" Margin="0,0,0,0" FontSize="24" FontFamily="Segoe UI Semibold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-        <Button Content="Sign Out" HorizontalAlignment="Right" Margin="0,10,9.6,10.4" Width="80" Grid.Column="2" Grid.Row="0" Click="SignOut" />
+        <Button Content="Sign Out" HorizontalAlignment="Right" Margin="0,10,10,10" Width="80" Grid.Column="2" Grid.Row="0" Click="SignOut" />
 
         <!--Personal & Notifications-->
-        <Label Content="Name:" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="0"/>
-        <Label Name="txtUserName" Content="John Doe" HorizontalAlignment="Left" Margin="119,0,0,0.2" FontSize="14" FontFamily="Segoe UI Semibold" Grid.ColumnSpan="2" Height="317" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
+        <Label Name="txtUserName" Content="Name:" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="14" FontFamily="Segoe UI Semibold"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Label Name="txtUserRole" Content="Role:" HorizontalAlignment="Left" Margin="10,25,0,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-        <Label Content="Role:" HorizontalAlignment="Right" Margin="0,25,10,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="0"/>
-        <Label Name="txtUserRole" Content="Letting Agent" HorizontalAlignment="Left" Margin="0,25,10,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="1"/>
-
-        <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,60,10,5" Padding="0">
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,10,10,10">
-                <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Notifications"/>
-            </StackPanel>
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,60,10,5" Padding="0">
+            <ScrollViewer HorizontalAlignment="Left" Width="370px" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Notifications"/>
+                    <ItemsControl Name="Notifications">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,1,0,0" BorderBrush="Black">
+                                    <StackPanel Orientation="Vertical" Margin="5,10,5,10">
+                                        <TextBlock Text="{Binding address, StringFormat='Address: {0}'}"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding notification}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
 
 
@@ -43,24 +54,28 @@
             <Button Grid.Row="3" Content="Property Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="PropertyManagement"/>
         </StackPanel>
 
-        <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10,20,10,30" Padding="0">
-            <StackPanel Orientation="Vertical">
-                <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Assigned Properties"/>
-                <ItemsControl Name="AssignedProperties">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical" Margin="5,10,5,10">
-                                <TextBlock Text="{Binding AddressLine1}"/>
-                                <TextBlock Text="{Binding PostCode}"/>
-                                <TextBlock Margin="0,5,0,0" Text="{Binding RequiredMaintainance, StringFormat='Required Maintainance: {0}'}"/>
-                                <TextBlock Text="{Binding QuarterlyInspection, StringFormat='Next Inspection: {0}'}"/>
-                                <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspeciton: {0}'}"/>
-                                <TextBlock Text="{Binding FiveYearElectricalInspection, StringFormat='Next Electrical Inspection: {0}'}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10,20,10,30" Padding="0">
+            <ScrollViewer HorizontalAlignment="Left" Width="370px" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Assigned Properties"/>
+                    <ItemsControl Name="AssignedProperties">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,1,0,0" BorderBrush="Black">
+                                    <StackPanel Orientation="Vertical" Margin="5,10,5,10">
+                                        <TextBlock Text="{Binding AddressLine1}"/>
+                                        <TextBlock Text="{Binding PostCode}"/>
+                                        <TextBlock Margin="0,5,0,0" Text="{Binding RequiredMaintainance, StringFormat='Required Maintainance: {0}'}"/>
+                                        <TextBlock Text="{Binding QuarterlyInspection, StringFormat='Next Inspection: {0}'}"/>
+                                        <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspeciton: {0}'}"/>
+                                        <TextBlock Text="{Binding FiveYearElectricalInspection, StringFormat='Next Electrical Inspection: {0}'}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
 
 

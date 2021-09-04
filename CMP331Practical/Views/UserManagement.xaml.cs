@@ -149,6 +149,11 @@ namespace CMP331Practical.Views
 
         private async void Delete(object sender, RoutedEventArgs e)
         {
+            if (selectedUser.Id == loggedInUser.Id)
+            {
+                MessageBox.Show("You Cannot Delete the Account You're Logged In With");
+                return;
+            }
             if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 userContext.Delete(selectedUser.Id);
