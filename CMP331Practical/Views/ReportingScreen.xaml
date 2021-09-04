@@ -1,0 +1,50 @@
+﻿<Window x:Class="CMP331Practical.Views.ReportingScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMP331Practical.Views"
+        mc:Ignorable="d"
+        Title="ReportingScreen" ResizeMode="NoResize" Height="450" Width="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Top Bar-->
+        <Button Content="New Invoice" Margin="20,0,0,0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
+        <Label Content="Reporting" HorizontalAlignment="Center" FontSize="24" FontFamily="Sergoe UI Semibold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <Button Content="Dashboard" Margin="0,0,20,0" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
+    
+        <!--Invoices and Maintainance-->
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Margin="5" Padding="0">
+            <ScrollViewer HorizontalAlignment="Left" Width="310" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Invoices"/>
+                    <ItemsControl Name="Invoices">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,1,0,0" BorderBrush="Black">
+                                    <StackPanel Orientation="Vertical" Margin="5,10,5,10">
+                                        <TextBlock Text="{Binding address, StringFormat='Address: {0}'}"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding notification}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="1" Margin="5" Padding="0">
+            <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Info"/>
+            <!--TODO add property info here-->
+        </Border>
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\App.xaml
-6980784677
+738794971
 
-27709951180
+28-757731953
 128-275488850
-MainWindow.xaml;Views\Dashboard.xaml;Views\NewProperty.xaml;Views\NewUser.xaml;Views\PropertyManagement.xaml;Views\UserManagement.xaml;
+MainWindow.xaml;Views\Dashboard.xaml;Views\NewProperty.xaml;Views\NewUser.xaml;Views\PropertyManagement.xaml;Views\ReportingScreen.xaml;Views\UserManagement.xaml;
 
-False
+True
 
