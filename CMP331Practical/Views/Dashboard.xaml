@@ -69,6 +69,7 @@
                                         <TextBlock Text="{Binding QuarterlyInspection, StringFormat='Next Inspection: {0}'}"/>
                                         <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspeciton: {0}'}"/>
                                         <TextBlock Text="{Binding FiveYearElectricalInspection, StringFormat='Next Electrical Inspection: {0}'}"/>
+                                        <Button Tag="{Binding Id}" Content="Reporting" Margin="25,5,25,0" Click="ViewReporting"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

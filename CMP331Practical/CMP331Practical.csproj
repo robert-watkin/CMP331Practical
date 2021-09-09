@@ -93,6 +93,9 @@
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewInvoice.xaml.cs">
+      <DependentUpon>NewInvoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewProperty.xaml.cs">
       <DependentUpon>NewProperty.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="Views\PropertyManagement.xaml.cs">
       <DependentUpon>PropertyManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportingScreen.xaml.cs">
+      <DependentUpon>ReportingScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserManagement.xaml.cs">
       <DependentUpon>UserManagement.xaml</DependentUpon>
@@ -126,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NewInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PropertyManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportingScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

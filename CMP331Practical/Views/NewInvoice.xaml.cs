@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CMP331Practical.Models;
+using CMP331Practical.Views;
 
 namespace CMP331Practical.Views
 {
@@ -19,9 +21,25 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class NewInvoice : Window
     {
-        public NewInvoice()
+
+        User loggedInUser;
+        public NewInvoice(User loggedInUser)
         {
+            this.loggedInUser = loggedInUser;
+
             InitializeComponent();
+        }
+
+        private void Dashboard(object sender, RoutedEventArgs e)
+        {
+            Dashboard d = new Dashboard(loggedInUser);
+            d.Show();
+            this.Close();
+        }
+
+        private void SaveRecord(object sender, RoutedEventArgs e)
+        {
+            // TODO save record
         }
     }
 }

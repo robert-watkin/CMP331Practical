@@ -54,3 +54,7 @@ C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Vi
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewProperty.baml
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewUser.baml
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\UserManagement.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewInvoice.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\ReportingScreen.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewInvoice.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\ReportingScreen.baml

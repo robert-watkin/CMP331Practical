@@ -194,6 +194,14 @@ namespace CMP331Practical.Views
             // TODO available properties
         }
 
+        private void ViewReporting(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            ReportingScreen rs = new ReportingScreen(loggedInUser, (string) button.Tag);
+            rs.Show();
+            this.Close();
+        }
+
         private void UserManagement(object sender, RoutedEventArgs e)
         {
             // open user management window

@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!--Top Bar-->
-        <Button Content="New Invoice" Margin="20,0,0,0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
+        <Button Content="New Invoice" Margin="20,0,0,0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="16" Width="90" Click="NewInvoice"/>
         <Label Content="Reporting" HorizontalAlignment="Center" FontSize="24" FontFamily="Sergoe UI Semibold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
         <Button Content="Dashboard" Margin="0,0,20,0" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
     
@@ -43,8 +43,22 @@
         </Border>
 
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="1" Margin="5" Padding="0">
-            <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Info"/>
-            <!--TODO add property info here-->
+            <StackPanel Orientation="Vertical">
+                <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Info"/>
+            
+                <!--add property info here-->
+                <Label FontFamily="Segoe UI Semibold" Content="Address:"/>
+                <Label FontFamily="Segoe UI" Name="lblAddress" Content="example"/>
+
+                <Label FontFamily="Segoe UI Bold" Content="Required Maintainance:"/>
+                <Label FontFamily="Segoe UI" Name="lblMaintainance"/>
+
+                <Label FontFamily="Segoe UI Bold" Content="Letting Agent:"/>
+                <Label FontFamily="Segoe UI" Name="lblLettingAgent"/>
+
+                <Label FontFamily="Segoe UI Bold" Content="Maintainance Staff:"/>
+                <Label FontFamily="Segoe UI" Name="lblMaintainanceStaff"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>
