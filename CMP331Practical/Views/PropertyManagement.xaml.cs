@@ -44,7 +44,6 @@ namespace CMP331Practical.Views
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
 
-
             InitializeComponent();
 
             RefreshData();

@@ -1,0 +1,54 @@
+﻿<Window x:Class="CMP331Practical.Views.AvailableProperties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMP331Practical.Views"
+        mc:Ignorable="d"
+        Title="AvailableProperties" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--header-->
+        <Rectangle Grid.Row="0" Fill="LightGray" />
+        <Label Content="Available Properties" HorizontalAlignment="Left" FontSize="24" Margin="20,5,0,5" FontFamily="Segoe UI Bold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <Button Content="Dashboard" Margin="0,0,20,0" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
+
+        <Rectangle Grid.Row="1" Fill="#D0D0FF" />
+        <Border Grid.Row="1" Background="White" BorderThickness="1px" BorderBrush="Black" Margin="5">
+            <StackPanel Orientation="Vertical">
+                <!--Search Bar-->
+                <StackPanel Orientation="Horizontal" Background="LightGray">
+                    <TextBox Width="250px" Margin="5"/>
+                    <Button Content="Search" Width="70px" Margin="5"/>
+                </StackPanel>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Border BorderBrush="Gray" BorderThickness="1px">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Width="450">
+                                <Label Content="Property Information" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,8,0,-5"/>
+                                <Label Content="Monthly Rent: £425" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                <Label Content="Next Quarterly Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                <Label Content="Next Gas Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                <Label Content="Next Electrical Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,10"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Width="350">
+                                <Label Content="Address:" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,10,0,0"/>
+                                <Label Content="49 Lesbury Avenue" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-5,0,0"/>
+                                <Label Content="Shiremoor" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
+                                <Label Content="NE27 0NP" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

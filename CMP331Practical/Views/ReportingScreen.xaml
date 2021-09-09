@@ -6,6 +6,15 @@
         xmlns:local="clr-namespace:CMP331Practical.Views"
         mc:Ignorable="d"
         Title="ReportingScreen" ResizeMode="NoResize" Height="450" Width="650">
+    <Window.Resources>
+        <Style x:Key="markPaid" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsPaid}" Value="True">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,10 +29,10 @@
         <Button Content="New Invoice" Margin="20,0,0,0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="16" Width="90" Click="NewInvoice"/>
         <Label Content="Reporting" HorizontalAlignment="Center" FontSize="24" FontFamily="Sergoe UI Semibold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
         <Button Content="Dashboard" Margin="0,0,20,0" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
-    
+
         <!--Invoices and Maintainance-->
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Margin="5" Padding="0">
-            <ScrollViewer HorizontalAlignment="Left" Width="310" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer HorizontalAlignment="Left" Width="305" VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
                     <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Invoices"/>
                     <ItemsControl Name="Invoices">
@@ -31,8 +40,11 @@
                             <DataTemplate>
                                 <Border BorderThickness="0,1,0,0" BorderBrush="Black">
                                     <StackPanel Orientation="Vertical" Margin="5,10,5,10">
-                                        <TextBlock Text="{Binding address, StringFormat='Address: {0}'}"/>
-                                        <TextBlock TextWrapping="Wrap" Text="{Binding notification}"/>
+                                        <TextBlock Text="{Binding DueDate, StringFormat='Due Date: {0}'}"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding AmountDue, StringFormat='Amount Due: £{0}'}"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding IsPaid, StringFormat='Paid: {0}'}"/>
+                                        <Button Content="Mark as Paid" Style="{StaticResource markPaid}" Tag="{Binding Id}" Margin="5" Click="MarkAsPaid"/>
+                                        <Button Content="Delete" Tag="{Binding Id}" Margin="5,0,5,0" Click="Delete"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

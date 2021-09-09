@@ -13,6 +13,7 @@ namespace CMP331Practical.Models
         public DateTime DueDate { get; set; }
         public string PropertyId { get; set; }
 
+        public Invoice() { }
         public Invoice(float AmountDue, bool IsPaid, DateTime DueDate, string PropertyId)
         {
             this.AmountDue = AmountDue;

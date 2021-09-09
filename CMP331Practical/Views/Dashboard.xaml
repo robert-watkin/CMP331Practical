@@ -27,7 +27,7 @@
         <Label Name="txtUserRole" Content="Role:" HorizontalAlignment="Left" Margin="10,25,0,0" FontSize="14" FontFamily="Segoe UI Semibold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
 
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,60,10,5" Padding="0">
-            <ScrollViewer HorizontalAlignment="Left" Width="370px" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
                     <Label FontFamily="Segoe UI Bold" FontSize="14" Content="Notifications"/>
                     <ItemsControl Name="Notifications">
