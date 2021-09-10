@@ -49,9 +49,9 @@
 
         <!--Navigation Buttons-->
         <StackPanel Grid.IsSharedSizeScope="True" Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="2">
-            <Button Grid.Row="3" Content="Available Properties" Height="50" Margin="20,15,15,5" FontSize="18" Click="AvailableProperties"/>
-            <Button Grid.Row="3" Content="User Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="UserManagement"/>
-            <Button Grid.Row="3" Content="Property Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="PropertyManagement"/>
+            <Button Name="btnAvailableProperties" Grid.Row="3" Content="Available Properties" Height="50" Margin="20,15,15,5" FontSize="18" Click="AvailableProperties"/>
+            <Button Name="btnUserManagement" Grid.Row="3" Content="User Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="UserManagement"/>
+            <Button Name="btnPropertyManagement" Grid.Row="3" Content="Property Management" Height="50" Margin="15,5,15,5" FontSize="18" Click="PropertyManagement"/>
         </StackPanel>
 
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10,20,10,30" Padding="0">
@@ -67,9 +67,9 @@
                                         <TextBlock Text="{Binding PostCode}"/>
                                         <TextBlock Margin="0,5,0,0" Text="{Binding RequiredMaintainance, StringFormat='Required Maintainance: {0}'}"/>
                                         <TextBlock Text="{Binding QuarterlyInspection, StringFormat='Next Inspection: {0}'}"/>
-                                        <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspeciton: {0}'}"/>
+                                        <TextBlock Text="{Binding AnnualGasInspection, StringFormat='Next Gas Inspection: {0}'}"/>
                                         <TextBlock Text="{Binding FiveYearElectricalInspection, StringFormat='Next Electrical Inspection: {0}'}"/>
-                                        <Button Tag="{Binding Id}" Content="Reporting" Margin="25,5,25,0" Click="ViewReporting"/>
+                                        <Button Name="btnReporting" Tag="{Binding Id}" Content="Reporting" Margin="25,5,25,0" Click="ViewReporting"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

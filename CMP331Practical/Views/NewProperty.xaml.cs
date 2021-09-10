@@ -30,11 +30,13 @@ namespace CMP331Practical.Views
 
         User loggedInUser;
         string[] maintainanceList = { "Electrical", "Heating", "Gas", "Plumbing", "None" };
+        Role currentRole;
 
 
-        public NewProperty(User loggedInUser)
+        public NewProperty(User loggedInUser, Role currentRole)
         {
             this.loggedInUser = loggedInUser;
+            this.currentRole = currentRole;
             InitializeComponent();
 
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
@@ -113,7 +115,7 @@ namespace CMP331Practical.Views
                 propertyContext.Insert(property);
                 await propertyContext.Commit();
                 MessageBox.Show("Record Created!", "Creation Successful!");
-                PropertyManagement pm = new PropertyManagement(loggedInUser);
+                PropertyManagement pm = new PropertyManagement(loggedInUser, currentRole);
                 this.Hide();
                 pm.Show();
             }

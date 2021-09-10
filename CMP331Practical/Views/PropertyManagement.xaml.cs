@@ -35,10 +35,12 @@ namespace CMP331Practical.Views
         int propertyListSize = 0;
         int position = 0;
         string[] maintainanceList = { "Electrical", "Heating", "Gas", "Plumbing", "None" };
+        Role currentRole;
 
-        public PropertyManagement(User loggedInUser)
+        public PropertyManagement(User loggedInUser, Role currentRole)
         {
             this.loggedInUser = loggedInUser;
+            this.currentRole = currentRole;
 
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
@@ -47,7 +49,22 @@ namespace CMP331Practical.Views
             InitializeComponent();
 
             RefreshData();
-            
+            SetButtonEnabled();
+        }
+
+        private void SetButtonEnabled()
+        {
+            if (currentRole.Name == "Letting Agent")
+            {
+                btnNew.IsEnabled = false;
+                btnDelete.IsEnabled = false;
+                txtAddressLine1.IsEnabled = false;
+                txtAddressLine2.IsEnabled = false;
+                txtPostCode.IsEnabled = false;
+                cmbLettingAgent.IsEnabled = false;
+                chkAvailable.IsEnabled = false;
+                monthlyRent.IsEnabled = false;
+            }
         }
 
         private void RefreshData()
@@ -270,7 +287,7 @@ namespace CMP331Practical.Views
         private void New(object sender, RoutedEventArgs e)
         {
             // new property
-            NewProperty np = new NewProperty(loggedInUser);
+            NewProperty np = new NewProperty(loggedInUser, currentRole);
             this.Close();
             np.Show();
         }

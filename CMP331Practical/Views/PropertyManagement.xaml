@@ -87,8 +87,8 @@
         <Button Content="Save" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="13" VerticalAlignment="Center" Width="60" FontFamily="Consolas" FontSize="18" Click="SaveRecord" FontWeight="Bold"/>
         <Button Content="&gt;|" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="LastRecord" FontWeight="Bold"/>
         <Button Content="&gt;" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,41.6,45.6,42.4" FontSize="18" Click="NextRecord" FontWeight="Bold"/>
-        <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="Delete"/>
-        <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" Width="80" Margin="5" FontSize="16" Click="New"/>
+        <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="Delete" Name="btnDelete"/>
+        <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" Width="80" Margin="5" FontSize="16" Click="New" Name="btnNew"/>
 
         <!--Back and Exit-->
         <Button Content="Dashboard" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" FontSize="16" Width="90" Click="Dashboard"/>
