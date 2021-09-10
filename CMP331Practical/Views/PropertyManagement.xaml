@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:CMP331Practical.Views"
         mc:Ignorable="d"
-        Title="PropertyManagement" ResizeMode="NoResize" Height="600" Width="550">
+        Title="PropertyManagement" ResizeMode="NoResize" Height="700" Width="550">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
@@ -18,6 +18,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
@@ -81,12 +84,25 @@
         <Label Content="Assigned Letting Agent:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-200,0,10,0" Grid.Column="1" Grid.Row="12" />
         <ComboBox Name="cmbLettingAgent" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
 
+        <!--Bedrooms-->
+        <Label Content="Number of Bedrooms:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-50,0,10,0" Grid.Column="1" Grid.Row="13" />
+        <xctk:IntegerUpDown Name="bedrooms" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
+
+        <!--Bathrooms-->
+        <Label Content="Number of Bathrooms:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-50,0,10,0" Grid.Column="1" Grid.Row="14" />
+        <xctk:IntegerUpDown Name="bathrooms" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
+
+        <!--Type-->
+        <Label Content="Type:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-200,0,10,0" Grid.Column="1" Grid.Row="15" />
+        <ComboBox Name="cmbPropertyType" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
+
+
         <!--Navigation and Save-->
-        <Button Content="|&lt;" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="FirstRecord" FontWeight="Bold"/>
-        <Button Content="&lt;" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,10,0" FontSize="18" Click="PreviousRecord" FontWeight="Bold"/>
-        <Button Content="Save" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="13" VerticalAlignment="Center" Width="60" FontFamily="Consolas" FontSize="18" Click="SaveRecord" FontWeight="Bold"/>
-        <Button Content="&gt;|" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="LastRecord" FontWeight="Bold"/>
-        <Button Content="&gt;" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="13" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,41.6,45.6,42.4" FontSize="18" Click="NextRecord" FontWeight="Bold"/>
+        <Button Content="|&lt;" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="16" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="FirstRecord" FontWeight="Bold"/>
+        <Button Content="&lt;" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="16" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,10,0" FontSize="18" Click="PreviousRecord" FontWeight="Bold"/>
+        <Button Content="Save" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="16" VerticalAlignment="Center" Width="60" FontFamily="Consolas" FontSize="18" Click="SaveRecord" FontWeight="Bold"/>
+        <Button Content="&gt;|" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="16" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="LastRecord" FontWeight="Bold"/>
+        <Button Content="&gt;" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="16" VerticalAlignment="Center" Width="30" FontFamily="Consolas" Margin="0,0,0,0" FontSize="18" Click="NextRecord" FontWeight="Bold"/>
         <Button Content="Delete" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" Width="80" Margin="5" FontSize="16" Click="Delete" Name="btnDelete"/>
         <Button Content="New" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="3" VerticalAlignment="Top" Width="80" Margin="5" FontSize="16" Click="New" Name="btnNew"/>
 

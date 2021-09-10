@@ -64,6 +64,9 @@ namespace CMP331Practical.Views
                 cmbLettingAgent.IsEnabled = false;
                 chkAvailable.IsEnabled = false;
                 monthlyRent.IsEnabled = false;
+                bedrooms.IsEnabled = false;
+                bathrooms.IsEnabled = false;
+
             }
         }
 
@@ -126,21 +129,31 @@ namespace CMP331Practical.Views
 
             cmbRequiredMaintainance.ItemsSource = maintainanceList;
 
-            if (selectedProperty == null){ return; }
+            string[] propertyTypes = { "Detached", "Semi-detached", "Terraced", "Flat" };
+            cmbPropertyType.ItemsSource = propertyTypes;
+
+            if (selectedProperty == null){
+                lblId.Content = "";
+                chkAvailable.IsChecked = false;
+                txtAddressLine1.Text = "";
+                txtAddressLine2.Text = "";
+                txtPostCode.Text = "";
+                monthlyRent.Text = "";
+                dtpQuarterly.Value = DateTime.Now;
+                dtpAnnualGasInspection.Value = DateTime.Now;
+                dtpFiveYearElectricalInspection.Value = DateTime.Now;
+                cmbLettingAgent.SelectedValue = null;
+                cmbMaintainanceStaff.SelectedValue = null;
+                cmbRequiredMaintainance.SelectedValue = null;
+                bedrooms.Text = "0";
+                bathrooms.Text = "0";
+                cmbPropertyType = null;
+
+                return; 
+            }
 
             // set values on the page
-            lblId.Content = selectedProperty.Id;
-            chkAvailable.IsChecked = selectedProperty.Available;
-            txtAddressLine1.Text = selectedProperty.AddressLine1;
-            txtAddressLine2.Text = selectedProperty.AddressLine2;
-            txtPostCode.Text = selectedProperty.PostCode;
-            monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
-            dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
-            dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
-            dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
-            cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
-            cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
-            cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+            SetValues();
         }
 
         private void Dashboard(object sender, RoutedEventArgs e)
@@ -158,17 +171,7 @@ namespace CMP331Practical.Views
             selectedProperty = propertyList.FirstOrDefault();
             position = propertyList.IndexOf(selectedProperty);
             lblId.Content = selectedProperty.Id;
-            chkAvailable.IsChecked = selectedProperty.Available;
-            txtAddressLine1.Text = selectedProperty.AddressLine1;
-            txtAddressLine2.Text = selectedProperty.AddressLine2;
-            txtPostCode.Text = selectedProperty.PostCode;
-            monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
-            dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
-            dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
-            dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
-            cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
-            cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
-            cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+            SetValues();
         }
 
         private void PreviousRecord(object sender, RoutedEventArgs e)
@@ -180,18 +183,7 @@ namespace CMP331Practical.Views
             {
                 selectedProperty = propertyList[position-1];
                 position = propertyList.IndexOf(selectedProperty);
-                lblId.Content = selectedProperty.Id;
-                chkAvailable.IsChecked = selectedProperty.Available;
-                txtAddressLine1.Text = selectedProperty.AddressLine1;
-                txtAddressLine2.Text = selectedProperty.AddressLine2;
-                txtPostCode.Text = selectedProperty.PostCode;
-                monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
-                dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
-                dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
-                dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
-                cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
-                cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
-                cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+                SetValues();
             }
         }
 
@@ -208,18 +200,7 @@ namespace CMP331Practical.Views
                 Console.WriteLine("Executing");
                 position++;
                 selectedProperty = propertyList[position];
-                lblId.Content = selectedProperty.Id;
-                chkAvailable.IsChecked = selectedProperty.Available;
-                txtAddressLine1.Text = selectedProperty.AddressLine1;
-                txtAddressLine2.Text = selectedProperty.AddressLine2;
-                txtPostCode.Text = selectedProperty.PostCode;
-                monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
-                dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
-                dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
-                dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
-                cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
-                cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
-                cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+                SetValues();
             }
 
             Console.WriteLine(position);
@@ -235,18 +216,7 @@ namespace CMP331Practical.Views
             {
                 position = propertyListSize - 1;
                 selectedProperty = propertyList[position];
-                lblId.Content = selectedProperty.Id;
-                chkAvailable.IsChecked = selectedProperty.Available;
-                txtAddressLine1.Text = selectedProperty.AddressLine1;
-                txtAddressLine2.Text = selectedProperty.AddressLine2;
-                txtPostCode.Text = selectedProperty.PostCode;
-                monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
-                dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
-                dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
-                dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
-                cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
-                cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
-                cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+                SetValues();
             }
         }
 
@@ -266,9 +236,31 @@ namespace CMP331Practical.Views
             selectedProperty.LettingAgentId = cmbLettingAgent.SelectedValue.ToString();
             selectedProperty.MaintainanceStaffId = cmbMaintainanceStaff.SelectedValue.ToString();
             selectedProperty.RequiredMaintainance = cmbRequiredMaintainance.SelectedValue.ToString();
+            selectedProperty.Bathrooms = int.Parse(bathrooms.Text);
+            selectedProperty.Bedrooms = int.Parse(bedrooms.Text);
+            selectedProperty.Type = cmbPropertyType.SelectedItem.ToString();
 
             await propertyContext.Commit();
             MessageBox.Show("Record Saved!", "Save Successful!");
+        }
+
+        private void SetValues()
+        {
+            lblId.Content = selectedProperty.Id;
+            chkAvailable.IsChecked = selectedProperty.Available;
+            txtAddressLine1.Text = selectedProperty.AddressLine1;
+            txtAddressLine2.Text = selectedProperty.AddressLine2;
+            txtPostCode.Text = selectedProperty.PostCode;
+            monthlyRent.Text = selectedProperty.MonthlyRent.ToString();
+            dtpQuarterly.Value = selectedProperty.QuarterlyInspection;
+            dtpAnnualGasInspection.Value = selectedProperty.AnnualGasInspection;
+            dtpFiveYearElectricalInspection.Value = selectedProperty.FiveYearElectricalInspection;
+            cmbLettingAgent.SelectedValue = selectedProperty.LettingAgentId;
+            cmbMaintainanceStaff.SelectedValue = selectedProperty.MaintainanceStaffId;
+            cmbRequiredMaintainance.SelectedValue = selectedProperty.RequiredMaintainance;
+            bedrooms.Text = selectedProperty.Bedrooms.ToString();
+            bathrooms.Text = selectedProperty.Bathrooms.ToString();
+            cmbPropertyType.SelectedItem = selectedProperty.Type;
         }
 
         private async void Delete(object sender, RoutedEventArgs e)

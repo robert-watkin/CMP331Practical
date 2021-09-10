@@ -19,9 +19,12 @@ namespace CMP331Practical.Models
         public DateTime FiveYearElectricalInspection { get; set; }
         public string MaintainanceStaffId { get; set; }
         public string LettingAgentId { get; set; }
+        public int Bedrooms { get; set; }
+        public int Bathrooms { get; set; }
+        public string Type { get; set; }
 
         public Property() { }
-        public Property(bool Available, string AddressLine1, string AddressLine2, string PostCode, float MonthlyRent, string RequiredMaintainance, DateTime QuarterlyInspection, DateTime AnnualGasInspection, DateTime FiveYearElectricalInspection, string MaintainanceStaffId, string LettingAgentId)
+        public Property(bool Available, string AddressLine1, string AddressLine2, string PostCode, float MonthlyRent, string RequiredMaintainance, DateTime QuarterlyInspection, DateTime AnnualGasInspection, DateTime FiveYearElectricalInspection, string MaintainanceStaffId, string LettingAgentId, int Bedrooms, int Bathrooms, string Type)
         {
             this.Available = Available;
             this.AddressLine1 = AddressLine1;
@@ -34,6 +37,9 @@ namespace CMP331Practical.Models
             this.FiveYearElectricalInspection = FiveYearElectricalInspection;
             this.MaintainanceStaffId = MaintainanceStaffId;
             this.LettingAgentId = LettingAgentId;
+            this.Bedrooms = Bedrooms;
+            this.Bathrooms = Bathrooms;
+            this.Type = Type;
         }
     }
 }

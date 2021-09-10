@@ -100,10 +100,15 @@ namespace CMP331Practical.Views
 
             cmbRequiredMaintainance.ItemsSource = maintainanceList;
 
+            string[] propertyTypes = { "Detached", "Semi-detached", "Terraced", "Flat" };
+            cmbPropertyType.ItemsSource = propertyTypes;
         }
 
         public async void SaveRecord(object sender, RoutedEventArgs e)
         {
+            if (!Validate())
+                return;
+            
             // TODO save record
             if (txtAddressLine1.Text.Equals("") || txtPostCode.Text.Equals("") || cmbLettingAgent.SelectedItem == null || cmbMaintainanceStaff.SelectedItem == null || cmbRequiredMaintainance == null)
             {
@@ -111,7 +116,7 @@ namespace CMP331Practical.Views
             }
             else
             {
-                Property property = new Property((bool) chkAvailable.IsChecked, txtAddressLine1.Text, txtAddressLine2.Text, txtPostCode.Text, float.Parse(monthlyRent.Text), cmbRequiredMaintainance.SelectedValue.ToString(), (DateTime) dtpQuarterly.Value, (DateTime) dtpAnnualGasInspection.Value, (DateTime) dtpFiveYearElectricalInspection.Value, cmbMaintainanceStaff.SelectedValue.ToString(), cmbLettingAgent.SelectedValue.ToString());
+                Property property = new Property((bool) chkAvailable.IsChecked, txtAddressLine1.Text, txtAddressLine2.Text, txtPostCode.Text, float.Parse(monthlyRent.Text), cmbRequiredMaintainance.SelectedValue.ToString(), (DateTime) dtpQuarterly.Value, (DateTime) dtpAnnualGasInspection.Value, (DateTime) dtpFiveYearElectricalInspection.Value, cmbMaintainanceStaff.SelectedValue.ToString(), cmbLettingAgent.SelectedValue.ToString(), (int)bedrooms.Value, (int)bathrooms.Value, cmbPropertyType.SelectedItem.ToString());
                 propertyContext.Insert(property);
                 await propertyContext.Commit();
                 MessageBox.Show("Record Created!", "Creation Successful!");
@@ -119,6 +124,11 @@ namespace CMP331Practical.Views
                 this.Hide();
                 pm.Show();
             }
+        }
+
+        private bool Validate()
+        {
+            return true;
         }
 
         private void Dashboard(object sender, RoutedEventArgs e)

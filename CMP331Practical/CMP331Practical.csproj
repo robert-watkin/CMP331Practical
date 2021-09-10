@@ -89,6 +89,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\MD5Password.cs" />
+    <Compile Include="Migrations\202109102007494_New-Fields.cs" />
+    <Compile Include="Migrations\202109102007494_New-Fields.designer.cs">
+      <DependentUpon>202109102007494_New-Fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Views\AvailableProperties.xaml.cs">
       <DependentUpon>AvailableProperties.xaml</DependentUpon>
@@ -126,7 +131,6 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\SQLRepository.cs" />
     <Compile Include="Data\DataContext.cs" />
-    <Compile Include="Data\SeedData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -197,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108201752042_IdFix.resx">
       <DependentUpon>202108201752042_IdFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109102007494_New-Fields.resx">
+      <DependentUpon>202109102007494_New-Fields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

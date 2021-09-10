@@ -48,7 +48,7 @@ namespace CMP331Practical
             bool valid = false;
             foreach (User u in users)
             {
-                if (u.Email.Equals(txtEmail.Text.ToLower()) && u.Password.Equals(pwdPassword.Password))
+                if (u.Email.Equals(txtEmail.Text.ToLower()) && MD5Password.verifyMd5Hash(pwdPassword.Password, u.Password))
                 {
                     loggedInUser = u;
 

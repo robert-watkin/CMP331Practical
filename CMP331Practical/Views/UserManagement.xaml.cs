@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CMP331Practical.Models;
+using CMP331Practical.Data;
 using CMP331Practical.Contracts;
 using Unity;
 
@@ -60,24 +61,27 @@ namespace CMP331Practical.Views
 
             selectedUser = usersList.FirstOrDefault();
             position = usersList.IndexOf(selectedUser);
-            lblId.Content = selectedUser.Id;
-            txtFirstName.Text = selectedUser.Firstname;
-            txtLastName.Text = selectedUser.Lastname;
-            txtEmail.Text = selectedUser.Email;
-            cmbRole.SelectedValue = selectedUser.RoleId;
-            txtPassword.Text = selectedUser.Password;
 
+            if (selectedUser == null)
+            {
+                lblId.Content = "";
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtEmail.Text = "";
+                cmbRole.SelectedValue = null;
+                txtPassword.Text = "";
+                return;
+            }
+
+            lblId.Content = selectedUser.Id;
+            SetValues();
         }
 
         private void FirstRecord(object sender, RoutedEventArgs e)
         {
             selectedUser = usersList.FirstOrDefault();
             position = usersList.IndexOf(selectedUser);
-            lblId.Content = selectedUser.Id;
-            txtFirstName.Text = selectedUser.Firstname;
-            txtLastName.Text = selectedUser.Lastname;
-            txtEmail.Text = selectedUser.Email;
-            cmbRole.SelectedValue = selectedUser.RoleId;
+            SetValues();
         }
 
         private void PreviousRecord(object sender, RoutedEventArgs e)
@@ -86,11 +90,7 @@ namespace CMP331Practical.Views
             {
                 selectedUser = usersList[position-1];
                 position = usersList.IndexOf(selectedUser);
-                lblId.Content = selectedUser.Id;
-                txtFirstName.Text = selectedUser.Firstname;
-                txtLastName.Text = selectedUser.Lastname;
-                txtEmail.Text = selectedUser.Email;
-                cmbRole.SelectedValue = selectedUser.RoleId;
+                SetValues();
             }
         }
 
@@ -100,11 +100,7 @@ namespace CMP331Practical.Views
             {
                 position++;
                 selectedUser = usersList[position];
-                lblId.Content = selectedUser.Id;
-                txtFirstName.Text = selectedUser.Firstname;
-                txtLastName.Text = selectedUser.Lastname;
-                txtEmail.Text = selectedUser.Email;
-                cmbRole.SelectedValue = selectedUser.RoleId;
+                SetValues();
             }
         }
 
@@ -114,21 +110,32 @@ namespace CMP331Practical.Views
             {
                 position = userListSize - 1;
                 selectedUser = usersList[position];
-                lblId.Content = selectedUser.Id;
-                txtFirstName.Text = selectedUser.Firstname;
-                txtLastName.Text = selectedUser.Lastname;
-                txtEmail.Text = selectedUser.Email;
-                cmbRole.SelectedValue = selectedUser.RoleId;
+                SetValues();
             }
         }
 
         private async void SaveRecord(object sender, RoutedEventArgs e)
         {
+            if (txtPassword.Text.Length < 8)
+            {
+                MessageBox.Show("Password Must be at Least 8 Characters Long", null, MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email Address is not Valid", null, MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             selectedUser.Firstname = txtFirstName.Text;
             selectedUser.Lastname = txtLastName.Text;
             selectedUser.Email = txtEmail.Text;
             selectedUser.RoleId = cmbRole.SelectedValue.ToString();
-            selectedUser.Password = txtPassword.Text;
+            if (txtPassword.Text != null && txtPassword.Text != "")
+            {
+                selectedUser.Password = MD5Password.getMd5Hash(txtPassword.Text);
+            }
             await userContext.Commit();
             MessageBox.Show("Record Saved!", "Save Successful!");
         }
@@ -147,13 +154,38 @@ namespace CMP331Practical.Views
             nu.Show();
         }
 
+        private void SetValues()
+        { 
+            // set values on screen based on the selected user
+            lblId.Content = selectedUser.Id;
+            txtFirstName.Text = selectedUser.Firstname;
+            txtLastName.Text = selectedUser.Lastname;
+            txtEmail.Text = selectedUser.Email;
+            cmbRole.SelectedValue = selectedUser.RoleId;
+            txtPassword.Text = "";
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private async void Delete(object sender, RoutedEventArgs e)
         {
             if (selectedUser.Id == loggedInUser.Id)
             {
-                MessageBox.Show("You Cannot Delete the Account You're Logged In With");
+                MessageBox.Show("You Cannot Delete the Account You're Logged In With",null, MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 userContext.Delete(selectedUser.Id);

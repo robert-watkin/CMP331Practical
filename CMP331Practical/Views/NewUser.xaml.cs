@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CMP331Practical.Models;
+using CMP331Practical.Data;
 using CMP331Practical.Contracts;
+using System.Security.Cryptography;
 using Unity;
 
 namespace CMP331Practical.Views
@@ -48,6 +50,18 @@ namespace CMP331Practical.Views
 
         private async void SaveRecord(object sender, RoutedEventArgs e)
         {
+            if (txtPassword.Password.Length < 8)
+            {
+                MessageBox.Show("Password Must be at Least 8 Characters Long", null, MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email Address is not Valid", null, MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             // TODO save record
             if (txtFirstName.Text.Equals("") || txtLastName.Text.Equals("") || txtEmail.Text.Equals("") || txtPassword.Password.Equals("") || cmbRole.SelectedItem == null)
             {
@@ -55,7 +69,7 @@ namespace CMP331Practical.Views
             }
             else
             {
-                User user = new User(txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPassword.Password, cmbRole.SelectedValue.ToString());
+                User user = new User(txtFirstName.Text, txtLastName.Text, txtEmail.Text, MD5Password.getMd5Hash(txtPassword.Password), cmbRole.SelectedValue.ToString());
                 userContext.Insert(user);
                 await userContext.Commit();
                 MessageBox.Show("Record Created!", "Creation Successful!");
@@ -65,6 +79,18 @@ namespace CMP331Practical.Views
             }
         }
 
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         private void Dashboard(object sender, RoutedEventArgs e)
         {
