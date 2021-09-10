@@ -30,24 +30,31 @@
                 </StackPanel>
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <Border BorderBrush="Gray" BorderThickness="1px">
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Vertical" Width="450">
-                                <Label Content="Property Information" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,8,0,-5"/>
-                                <Label Content="Monthly Rent: £425" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
-                                <Label Content="Next Quarterly Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
-                                <Label Content="Next Gas Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
-                                <Label Content="Next Electrical Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,10"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Width="350">
-                                <Label Content="Address:" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,10,0,0"/>
-                                <Label Content="49 Lesbury Avenue" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-5,0,0"/>
-                                <Label Content="Shiremoor" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
-                                <Label Content="NE27 0NP" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
+                    <ItemsControl Name="Results">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Gray" BorderThickness="1px">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Width="450">
+                                            <Label Content="Property Information" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,8,0,-5"/>
+                                            <Label Content="Monthly Rent: £425" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                            <Label Content="Next Quarterly Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                            <Label Content="Next Gas Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,0"/>
+                                            <Label Content="Next Electrical Inspection: 05/07/2021" FontFamily="Segoe UI Semibold" FontSize="18" Margin="5,0,0,10"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Width="350">
+                                            <Label Content="Address:" FontFamily="Segoe UI Bold" FontSize="18" Margin="5,10,0,0"/>
+                                            <Label Content="49 Lesbury Avenue" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-5,0,0"/>
+                                            <Label Content="Shiremoor" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
+                                            <Label Content="NE27 0NP" FontFamily="Segoe UI Semibold" FontSize="16" Margin="5,-10,0,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </ScrollViewer>
+                            
             </StackPanel>
         </Border>
     </Grid>
