@@ -58,3 +58,5 @@ C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Vi
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\ReportingScreen.g.cs
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\NewInvoice.baml
 C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\ReportingScreen.baml
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\AvailableProperties.g.cs
+C:\Users\robert.watkin\source\repos\CMP331Practical\CMP331Practical\obj\Debug\Views\AvailableProperties.baml

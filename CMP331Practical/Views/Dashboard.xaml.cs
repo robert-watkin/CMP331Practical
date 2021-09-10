@@ -191,7 +191,10 @@ namespace CMP331Practical.Views
 
         private void AvailableProperties(object sender, RoutedEventArgs e)
         {
-            // TODO available properties
+            // available properties
+            AvailableProperties ap = new AvailableProperties(loggedInUser);
+            ap.Show();
+            this.Close();
         }
 
         private void ViewReporting(object sender, RoutedEventArgs e)
