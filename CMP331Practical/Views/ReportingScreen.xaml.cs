@@ -52,8 +52,16 @@ namespace CMP331Practical.Views
 
         private void RefreshInvoiceData()
         {
-            List<Invoice> invoiceList = invoiceContext.Collection().ToList();
-            Invoices.ItemsSource = invoiceList;
+            List<Invoice> allInvoices = invoiceContext.Collection().ToList();
+            List<Invoice> results = new List<Invoice>();
+            foreach (Invoice invoice in allInvoices)
+            {
+                if (invoice.PropertyId == selectedPropertyId)
+                {
+                    results.Add(invoice);
+                }
+            }
+            Invoices.ItemsSource = results;
         }
 
         private void SetCurrentPropertyInfo()
@@ -73,7 +81,7 @@ namespace CMP331Practical.Views
 
                     List<Role> roleList = roleContext.Collection().ToList();
                     List<User> userList = userContext.Collection().ToList();
-                    
+
 
                     User agent;
                     User maintainanceStaff = null;
@@ -82,23 +90,26 @@ namespace CMP331Practical.Views
                     // get the correct user information for the agent and maintainance staff
                     foreach (User user in userList)
                     {
-                        if (user.Id == property.LettingAgentId) 
+                        if (user.Id == property.LettingAgentId)
                         {
                             agent = user;
                         }
-                        else if(user.Id == property.MaintainanceStaffId)
+                        else if (user.Id == property.MaintainanceStaffId)
                         {
                             maintainanceStaff = user;
                         }
                     }
 
                     // get the role name of the maintainance staff
-                    foreach (Role role in roleList)
+                    if (maintainanceStaff != null)
                     {
-                        if (role.Id == maintainanceStaff.RoleId)
+                        foreach (Role role in roleList)
                         {
-                            maintainanceRole = role.Name;
-                            break;
+                            if (role.Id == maintainanceStaff.RoleId)
+                            {
+                                maintainanceRole = role.Name;
+                                break;
+                            }
                         }
                     }
 

@@ -12,7 +12,7 @@ namespace CMP331Practical.Models
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string PostCode { get; set; }
-        public float MonthlyRent { get; set; }
+        public string MonthlyRent { get; set; }
         public string RequiredMaintainance { get; set; }
         public DateTime QuarterlyInspection { get; set; }
         public DateTime AnnualGasInspection { get; set; }
@@ -24,7 +24,7 @@ namespace CMP331Practical.Models
         public string Type { get; set; }
 
         public Property() { }
-        public Property(bool Available, string AddressLine1, string AddressLine2, string PostCode, float MonthlyRent, string RequiredMaintainance, DateTime QuarterlyInspection, DateTime AnnualGasInspection, DateTime FiveYearElectricalInspection, string MaintainanceStaffId, string LettingAgentId, int Bedrooms, int Bathrooms, string Type)
+        public Property(bool Available, string AddressLine1, string AddressLine2, string PostCode, string MonthlyRent, string RequiredMaintainance, DateTime QuarterlyInspection, DateTime AnnualGasInspection, DateTime FiveYearElectricalInspection, string MaintainanceStaffId, string LettingAgentId, int Bedrooms, int Bathrooms, string Type)
         {
             this.Available = Available;
             this.AddressLine1 = AddressLine1;

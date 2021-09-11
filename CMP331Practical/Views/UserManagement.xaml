@@ -50,6 +50,7 @@
         <!--Password-->
         <Label Content="Password:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-200,0,10,0" Grid.Column="1" Grid.Row="6" />
         <TextBox Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Width="200" Margin="10,0,0,0"/>
+        <Label Content="(Leave Blank to Keep Current Password)" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-33,10,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" />
 
 
         <!--Navigation and Save-->

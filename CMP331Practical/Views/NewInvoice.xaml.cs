@@ -64,7 +64,7 @@ namespace CMP331Practical.Views
             {
                 // get the property in question
                 Property p = (Property) cmbProperty.SelectedItem;
-                Invoice invoice = new Invoice(p.MonthlyRent, (bool)chkPaid.IsChecked, (DateTime)dtpDueDate.Value, p.Id);
+                Invoice invoice = new Invoice(float.Parse(p.MonthlyRent.TrimStart('£')), (bool)chkPaid.IsChecked, (DateTime)dtpDueDate.Value, p.Id);
                 invoiceContext.Insert(invoice);
                 await invoiceContext.Commit();
                 MessageBox.Show("Record Created!", "Creation Successful!");

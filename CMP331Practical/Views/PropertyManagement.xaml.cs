@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -224,12 +225,20 @@ namespace CMP331Practical.Views
         {
             if (selectedProperty == null) { return; }
 
+            // Regex for postcode
+            Regex r = new Regex("([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})");
+            if (txtPostCode.Text != null && !r.IsMatch(txtPostCode.Text)){
+                MessageBox.Show("Post Code is not Formatted Correctly", "Please Try Again", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+                
+
             // save record
             selectedProperty.Available = (bool) chkAvailable.IsChecked;
             selectedProperty.AddressLine1 = txtAddressLine1.Text;
             selectedProperty.AddressLine2 = txtAddressLine2.Text;
             selectedProperty.PostCode = txtPostCode.Text;
-            selectedProperty.MonthlyRent = float.Parse(monthlyRent.Text);
+            selectedProperty.MonthlyRent = monthlyRent.Text;
             selectedProperty.QuarterlyInspection = (DateTime) dtpQuarterly.Value;
             selectedProperty.AnnualGasInspection = (DateTime) dtpAnnualGasInspection.Value;
             selectedProperty.FiveYearElectricalInspection = (DateTime) dtpFiveYearElectricalInspection.Value;

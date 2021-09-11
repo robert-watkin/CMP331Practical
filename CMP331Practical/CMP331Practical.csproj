@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202109102007494_New-Fields.designer.cs">
       <DependentUpon>202109102007494_New-Fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109111151181_RentToString.cs" />
+    <Compile Include="Migrations\202109111151181_RentToString.designer.cs">
+      <DependentUpon>202109111151181_RentToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Views\AvailableProperties.xaml.cs">
       <DependentUpon>AvailableProperties.xaml</DependentUpon>
@@ -204,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109102007494_New-Fields.resx">
       <DependentUpon>202109102007494_New-Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109111151181_RentToString.resx">
+      <DependentUpon>202109111151181_RentToString.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
