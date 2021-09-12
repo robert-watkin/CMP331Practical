@@ -23,12 +23,13 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class AvailableProperties : Window
     {
-
+        // variable declarations
         private User loggedInUser;
         private List<Property> allProperties;
 
         IRepository<Property> propertyContext;
 
+        // constructor
         public AvailableProperties(User loggedInUser)
         {
             this.loggedInUser = loggedInUser;
@@ -37,35 +38,41 @@ namespace CMP331Practical.Views
             LoadProperties();
         }
 
+        // handles loading the properties to be displayed
         private void LoadProperties()
         {
+            // get all properties from the database
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             allProperties = propertyContext.Collection().ToList();
 
+            // create a list to hold the filtered properties properties
             List<Property> availableProperties = new List<Property>();
             foreach (Property property in allProperties)
             {
-                if (property.Available == true)
+                if (property.Available == true) // if available
                 {
-                    if (txtSearch.Text != null && txtSearch.Text != "")
+                    if (txtSearch.Text != null && txtSearch.Text != "") // if a search query is supplied
                     {
                         if (property.AddressLine1.ToLower().Contains(txtSearch.Text.ToLower()) || property.PostCode.ToLower().Contains(txtSearch.Text.ToLower()))
                         {
+                            // if the search query matches the address or postcode, add the property
                             availableProperties.Add(property);
                         }
                     }
                     else
                     {
-                        availableProperties.Add(property);
+                        availableProperties.Add(property); // add the property
                     }
                 }
             }
 
+            // display the properties
             Results.ItemsSource = availableProperties;
         }
 
         private void Dashboard(object sender, RoutedEventArgs e)
         {
+            // open and display dashboard
             Dashboard d = new Dashboard(loggedInUser);
             d.Show();
             this.Close();
@@ -73,6 +80,7 @@ namespace CMP331Practical.Views
 
         private void Search(object sender, RoutedEventArgs e)
         {
+            // reload the properties
             LoadProperties();
         }
     }

@@ -25,6 +25,7 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class PropertyManagement : Window
     {
+        // variable declaration
         IRepository<Property> propertyContext;
         IRepository<User> userContext;
         IRepository<Role> roleContext;
@@ -38,25 +39,32 @@ namespace CMP331Practical.Views
         string[] maintainanceList = { "Electrical", "Heating", "Gas", "Plumbing", "None" };
         Role currentRole;
 
+        // constructor
         public PropertyManagement(User loggedInUser, Role currentRole)
         {
+            // set values
             this.loggedInUser = loggedInUser;
             this.currentRole = currentRole;
 
+            // load data
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
 
+            // initialise the WPF components
             InitializeComponent();
 
+            // function calls
             RefreshData();
             SetButtonEnabled();
         }
 
         private void SetButtonEnabled()
         {
+            // check role
             if (currentRole.Name == "Letting Agent")
             {
+                // disable buttons
                 btnNew.IsEnabled = false;
                 btnDelete.IsEnabled = false;
                 txtAddressLine1.IsEnabled = false;
@@ -73,6 +81,7 @@ namespace CMP331Practical.Views
 
         private void RefreshData()
         {
+            // get data as lists
             List<User> userList = userContext.Collection().ToList();
             List<Role> roleList = roleContext.Collection().ToList();
             List<string> maintainanceRoles = new List<string>();
@@ -134,6 +143,7 @@ namespace CMP331Practical.Views
             cmbPropertyType.ItemsSource = propertyTypes;
 
             if (selectedProperty == null){
+                // set all values to blank or null
                 lblId.Content = "";
                 chkAvailable.IsChecked = false;
                 txtAddressLine1.Text = "";
@@ -159,6 +169,7 @@ namespace CMP331Practical.Views
 
         private void Dashboard(object sender, RoutedEventArgs e)
         {
+            // open and display the dashboard
             Dashboard d = new Dashboard(loggedInUser);
             d.Show();
             this.Close();
@@ -255,6 +266,7 @@ namespace CMP331Practical.Views
 
         private void SetValues()
         {
+            // set the values based on the selected properties
             lblId.Content = selectedProperty.Id;
             chkAvailable.IsChecked = selectedProperty.Available;
             txtAddressLine1.Text = selectedProperty.AddressLine1;
@@ -276,8 +288,10 @@ namespace CMP331Practical.Views
         {
             if (selectedProperty == null) { return; }
 
+            // confirm delete
             if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
+                // delete the property
                 propertyContext.Delete(selectedProperty.Id);
                 await propertyContext.Commit();
                 MessageBox.Show("Record deleted!", "Delete Successful!");

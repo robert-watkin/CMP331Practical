@@ -23,7 +23,7 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class Dashboard : Window
     {
-
+        // variable declaration
         IRepository<Role> roleContext;
         IRepository<Property> propertyContext;
         IRepository<Invoice> invoiceContext;
@@ -34,19 +34,19 @@ namespace CMP331Practical.Views
         public List<Property> assignedProperties;
         public List<Notification> notifications;
 
+        // constructor
         public Dashboard(User loggedInUser)
         {
-
+            // load all required data
+            this.loggedInUser = loggedInUser;
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
             this.invoiceContext = ContainerHelper.Container.Resolve<IRepository<Invoice>>();
 
-
+            // initialise WPF components
             InitializeComponent();
-            this.loggedInUser = loggedInUser;
             
-
             // set name and role on dashboard
             txtUserName.Content = "Name: " + this.loggedInUser.Firstname + " " + this.loggedInUser.Lastname;
 
@@ -59,10 +59,9 @@ namespace CMP331Practical.Views
                     currentRole = r;
                 }
             }
-
             txtUserRole.Content = "Role: " + currentRole.Name;
 
-            
+            // call other functions
             LoadAssignedProperties();
             LoadNotifications();
             SetButtonEnabled();
@@ -70,36 +69,38 @@ namespace CMP331Practical.Views
 
         private void SetButtonEnabled()
         {
+            // check users current role
             if (currentRole.Name.Contains("Maintainance"))
             {
+                // disable buttons
                 btnAvailableProperties.IsEnabled = false;
                 btnPropertyManagement.IsEnabled = false;
                 btnUserManagement.IsEnabled = false;
             }
             else if (currentRole.Name == "Letting Agent")
             {
+                // disable buttons
                 btnUserManagement.IsEnabled = false;
             }
         }
 
         private void LoadAssignedProperties()
         {
+            // get all properties
             assignedProperties = new List<Property>();
             List<Property> allProperties = propertyContext.Collection().ToList();
 
+            // check role
             if (currentRole.Name == "System Admin") // all properties displayed for system admin
             {
                 assignedProperties = allProperties;
             }
             else if (currentRole.Name == "Letting Agent") // only properties assigned to letting agents displayed to the letting agent
             {
-                Console.WriteLine("Letting Agent");
                 foreach (Property p in allProperties)
                 {
-                    Console.WriteLine(p.LettingAgentId + " == " + loggedInUser.Id);
                     if (p.LettingAgentId == loggedInUser.Id)
                     {
-                        Console.WriteLine("True\n");
                         assignedProperties.Add(p);
                     }
                 }
@@ -115,12 +116,13 @@ namespace CMP331Practical.Views
                 }
             }
 
-
+            // display the assigned properties
             AssignedProperties.ItemsSource = assignedProperties;
         }
 
         private void SignOut(object sender, RoutedEventArgs e)
         {
+            // open the main window (login screen)
             MainWindow l = new MainWindow();
             l.Show();
             this.Close();
@@ -129,6 +131,8 @@ namespace CMP331Practical.Views
         private void LoadNotifications()
         {
             Console.WriteLine("Loading Notifications...");
+
+            // load data for the notifications
             notifications = new List<Notification>();
             List<User> allUsers = userContext.Collection().ToList();
             List<Role> roleList = roleContext.Collection().ToList();
@@ -152,7 +156,7 @@ namespace CMP331Practical.Views
                         }
                         else // incorrect staff assigned
                         {
-                            foreach (User user in allUsers)
+                            foreach (User user in allUsers) // loop users
                             {
                                 if (user.Id == property.MaintainanceStaffId)
                                 {
@@ -238,8 +242,9 @@ namespace CMP331Practical.Views
                 MessageBox.Show("Maintainance Staff are Not Permitted to View the Reporting Screen");
                 return;
             }
-
-                Button button = (Button)sender;
+            
+            // open reporting screen
+            Button button = (Button)sender;
             ReportingScreen rs = new ReportingScreen(loggedInUser, (string) button.Tag);
             rs.Show();
             this.Close();

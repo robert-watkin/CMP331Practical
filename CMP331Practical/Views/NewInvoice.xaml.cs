@@ -23,21 +23,24 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class NewInvoice : Window
     {
-
+        // variable declaration
         IRepository<Property> propertyContext;
         IRepository<Invoice> invoiceContext;
 
         User loggedInUser;
 
+        // constructor
         public NewInvoice(User loggedInUser, string selectedPropertyId)
         {
             this.loggedInUser = loggedInUser;
             InitializeComponent();
 
+            // load data
             this.invoiceContext = ContainerHelper.Container.Resolve<IRepository<Invoice>>();
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             List<Property> propertyList = propertyContext.Collection().ToList();
 
+            // set options for property selection
             cmbProperty.ItemsSource = propertyList;
             cmbProperty.DisplayMemberPath = "AddressLine1";
             cmbProperty.SelectedValuePath = "Id";
@@ -45,9 +48,9 @@ namespace CMP331Practical.Views
             cmbProperty.SelectedValue = selectedPropertyId;
         }
 
-
         private void Dashboard(object sender, RoutedEventArgs e)
         {
+            // open and display dashboard
             Dashboard d = new Dashboard(loggedInUser);
             d.Show();
             this.Close();

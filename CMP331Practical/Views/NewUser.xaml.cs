@@ -24,14 +24,15 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class NewUser : Window
     {
-
+        // variable declaration
         IRepository<User> userContext;
         IRepository<Role> roleContext;
         private User loggedInUser;
 
-
+        // constructor
         public NewUser(User loggedInUser)
         {
+            // load data
             this.loggedInUser = loggedInUser;
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
@@ -39,8 +40,10 @@ namespace CMP331Practical.Views
             // initialise WPF components
             InitializeComponent();
 
+            // get list of roles
             List<Role> roleList = roleContext.Collection().ToList();
 
+            // set role selection options
             cmbRole.ItemsSource = roleList;
             cmbRole.DisplayMemberPath = "Name";
             cmbRole.SelectedValuePath = "Id";
@@ -50,6 +53,7 @@ namespace CMP331Practical.Views
 
         private async void SaveRecord(object sender, RoutedEventArgs e)
         {
+            // validation
             if (txtPassword.Password.Length < 8)
             {
                 MessageBox.Show("Password Must be at Least 8 Characters Long", null, MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -62,13 +66,14 @@ namespace CMP331Practical.Views
                 return;
             }
 
-            // TODO save record
+            // check for null values
             if (txtFirstName.Text.Equals("") || txtLastName.Text.Equals("") || txtEmail.Text.Equals("") || txtPassword.Password.Equals("") || cmbRole.SelectedItem == null)
             {
                 MessageBox.Show("Please enter First Name, Last Name, Email, Password and Select Role");
             }
             else
             {
+                // create new user and save
                 User user = new User(txtFirstName.Text, txtLastName.Text, txtEmail.Text, MD5Password.getMd5Hash(txtPassword.Password), cmbRole.SelectedValue.ToString());
                 userContext.Insert(user);
                 await userContext.Commit();
@@ -81,6 +86,7 @@ namespace CMP331Practical.Views
 
         private bool IsValidEmail(string email)
         {
+            // validate the email
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
@@ -94,6 +100,7 @@ namespace CMP331Practical.Views
 
         private void Dashboard(object sender, RoutedEventArgs e)
         {
+            // open and display the dashboard
             Dashboard d = new Dashboard(loggedInUser);
             d.Show();
             this.Close();

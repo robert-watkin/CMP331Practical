@@ -23,8 +23,7 @@ namespace CMP331Practical.Views
     /// </summary>
     public partial class NewProperty : Window
     {
-        // TODO adjust monthly rent selection to allow decimals - property management and this
-
+        // variable declaration
         IRepository<Property> propertyContext;
         IRepository<User> userContext;
         IRepository<Role> roleContext;
@@ -33,13 +32,15 @@ namespace CMP331Practical.Views
         string[] maintainanceList = { "Electrical", "Heating", "Gas", "Plumbing", "None" };
         Role currentRole;
 
-
+        // constructor
         public NewProperty(User loggedInUser, Role currentRole)
         {
+            // initialise variables
             this.loggedInUser = loggedInUser;
             this.currentRole = currentRole;
             InitializeComponent();
 
+            // load data
             this.propertyContext = ContainerHelper.Container.Resolve<IRepository<Property>>();
             this.userContext = ContainerHelper.Container.Resolve<IRepository<User>>();
             this.roleContext = ContainerHelper.Container.Resolve<IRepository<Role>>();
@@ -49,6 +50,7 @@ namespace CMP331Practical.Views
 
         private void ComboBoxSetup()
         {
+            // get data in lists
             List<User> userList = userContext.Collection().ToList();
             List<Role> roleList = roleContext.Collection().ToList();
             List<string> maintainanceRoles = new List<string>();
@@ -116,7 +118,7 @@ namespace CMP331Practical.Views
                 return;
             }
 
-            // TODO save record
+            // save record
             if (txtAddressLine1.Text.Equals("") || txtPostCode.Text.Equals("") || bedrooms.Text.Equals("") || bathrooms.Text.Equals("") || cmbLettingAgent.SelectedItem == null || cmbMaintainanceStaff.SelectedItem == null || cmbRequiredMaintainance == null || cmbPropertyType == null)
             {
                 MessageBox.Show("Please enter Address Line 1, Post Code Number of Bedrooms & Bathrooms. Also Select a Letting Agent, Maintainance Staff, Required Maintainance and the Property Type");
